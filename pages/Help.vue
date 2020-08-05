@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="helpData.success">
-      <HelpComponent :helpData="helpData" />
+      <help-component :helpData="helpData" />
     </div>
     <div v-else-if="criticalError">
-      <NotFound :item="'Help'" />
+      <not-found :item="'Help'" />
     </div>
     <div v-else class="loading-spinner">
       <b-spinner class="text-primary" label="Spinning"></b-spinner>

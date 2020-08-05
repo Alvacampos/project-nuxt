@@ -6,7 +6,8 @@ export const state = () => ({
     favorite: 0,
     cars: [],
     criticalError: false,
-    helpData: {}
+    helpData: {},
+    users: []
 });
 
 export const mutations = {
@@ -14,7 +15,7 @@ export const mutations = {
     state.favorite = data;
   },
   loadCars(state, data) {
-    state.cars = data.map((car) => {
+    state.cars = data.map(car => {
       return car;
     });
   },
@@ -22,33 +23,49 @@ export const mutations = {
     state.helpData = data;
   },
   loadingSpinner(state) {
-    state.loading = false
-    
+    state.loading = false;
   },
   loadError(state, data) {
     state.criticalError = data;
+  },
+  setUsers(state, data) {
+    state.users = data
+    console.log(data)
   }
 };
 
 export const actions = {
   async getCarData({ commit }) {
     try {
-      commit('loadCars', await carsData);
+      commit("loadCars", await carsData);
       commit("loadingSpinner");
     } catch (e) {
-      commit('loadError', true);
+      commit("loadError", true);
       commit("loadingSpinner");
       console.log(e);
     }
   },
   async getHelpData({ commit }) {
     try {
-      commit('loadHelp', await helpData);
+      commit("loadHelp", await helpData);
     } catch (e) {
       console.log(e);
     }
   },
   favorite({ commit }, data) {
-    commit('favorite', data);
+    commit("favorite", data);
+  },
+  async apiTestCall({ commit }) {
+    // Do to time restrictions API implementation couldn't be done, here is an example using axios
+    try {
+      commit(
+        "setUsers",
+        await this.$axios.$get(
+          "https://jsonplaceholder.typicode.com/posts?userId=1"
+        )
+      );
+    } catch (e) {
+      console.log(e)
+    }
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CarCard v-for="car in cars" :key="car.id" :car="car" class="gallery" />
+    <car-card v-for="car in cars" :key="car.id" :car="car" class="gallery" />
   </div>
 </template>
 
@@ -14,11 +14,11 @@ export default {
     cars: {
       type: Array,
       required: true,
-      default: function () {
+      default: function() {
         return [];
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>
 

@@ -6,10 +6,10 @@
       </div>
     </no-ssr>
     <div v-if="cars.length !== 0">
-      <CarGallery :loadError="criticalError" :cars="cars" />
+      <car-gallery :loadError="criticalError" :cars="cars" />
     </div>
     <div v-if="criticalError && !loading">
-      <NotFound />
+      <not-found />
     </div>
   </div>
 </template>
@@ -20,11 +20,12 @@ import CarGallery from "@/components/CarGallery";
 import NotFound from "@/components/NotFound";
 
 export default {
-  name: "Home",
+  name: "Index",
   components: { CarGallery, NotFound },
 
   fetch() {
     this.$store.dispatch("getCarData");
+    this.$store.dispatch("apiTestCall");
   },
 
   computed: {
