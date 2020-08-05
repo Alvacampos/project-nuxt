@@ -14,14 +14,16 @@ export const mutations = {
     state.favorite = data;
   },
   loadCars(state, data) {
-    console.log("mutation");
-    state.loading = false
     state.cars = data.map((car) => {
       return car;
     });
   },
   loadHelp(state, data) {
     state.helpData = data;
+  },
+  loadingSpinner(state) {
+    state.loading = false
+    
   },
   loadError(state, data) {
     state.criticalError = data;
@@ -30,11 +32,12 @@ export const mutations = {
 
 export const actions = {
   async getCarData({ commit }) {
-    console.log("ACTION");
     try {
       commit('loadCars', await carsData);
+      commit("loadingSpinner");
     } catch (e) {
       commit('loadError', true);
+      commit("loadingSpinner");
       console.log(e);
     }
   },

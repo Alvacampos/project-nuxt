@@ -1,12 +1,9 @@
 <template>
   <div id="app">
     <b-navbar type="dark" variant="dark">
-      <b-navbar-nav>
-        <nuxt-link class="nav-links" to="/">Home</nuxt-link>
-        <nuxt-link class="nav-links" to="/help">Help</nuxt-link>
-      </b-navbar-nav>
+      <nuxt-link class="nav-links" to="/">Home</nuxt-link>
+      <nuxt-link class="nav-links" to="/help">Help</nuxt-link>
     </b-navbar>
-
     <nuxt-child />
   </div>
 </template>

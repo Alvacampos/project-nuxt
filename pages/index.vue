@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div v-if="loading" class="loading-spinner">
-      <b-spinner class="text-primary" label="Spinning"></b-spinner>
-    </div>
+    <no-ssr>
+      <div v-if="loading" class="loading-spinner">
+        <b-spinner class="text-primary" label="Spinning"></b-spinner>
+      </div>
+    </no-ssr>
     <div v-if="cars.length !== 0">
       <CarGallery :loadError="criticalError" :cars="cars" />
     </div>
-    <div v-if="criticalError">
+    <div v-if="criticalError && !loading">
       <NotFound />
     </div>
   </div>

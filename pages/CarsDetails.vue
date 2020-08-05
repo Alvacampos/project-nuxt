@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <car-details :car="searchCar()" />
   </div>
 </template>
@@ -12,16 +12,15 @@ export default {
   components: { CarDetails },
   methods: {
     searchCar() {
-      return this.cars.find((car) => {
+      return this.cars.find(car => {
         return car.id === this.favorite;
       });
-    },
+    }
   },
   computed: {
-    ...mapState(["cars", "favorite"]),
-  },
+    ...mapState(["cars", "favorite"])
+  }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

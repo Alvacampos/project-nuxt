@@ -156,10 +156,10 @@ const cars = [
 // Here you can simulate a server error
 const test = true
 const carsData = new Promise((resolve, reject) => {
-  setTimeout(() => {
+
     if (test) resolve(cars);
     else reject('Server error');
-  }, 3000)
+
 })
   
 export default carsData;

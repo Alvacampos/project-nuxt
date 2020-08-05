@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <div v-if="helpData.success">
       <HelpComponent :helpData="helpData" />
     </div>
